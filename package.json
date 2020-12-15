@@ -1,6 +1,6 @@
 {
 	"name": "@papb/assorted-ts-utils",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Personal collection of assorted TypeScript utility types",
 	"license": "MIT",
 	"repository": "papb/assorted-ts-utils",
