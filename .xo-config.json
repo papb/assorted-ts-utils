@@ -1,0 +1,16 @@
+{
+	"rules": {
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/indent": "off",
+		"unicorn/prevent-abbreviations": "off",
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"object-curly-spacing": [
+			"error",
+			"always"
+		]
+	}
+}
