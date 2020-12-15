@@ -5,7 +5,7 @@
 
 ## Highlights
 
-* `StrictEquals<A, B>`
+* `StrictEqual<A, B>`
 * `IfAny<T, ThenType, ElseType>`
 * `IfUnknown<T, ThenType, ElseType>`
 * `IfNever<T, ThenType, ElseType>`
