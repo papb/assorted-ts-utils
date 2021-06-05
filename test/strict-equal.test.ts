@@ -6,6 +6,8 @@ tsAssertTrue<StrictEqual<unknown, unknown>>();
 tsAssertTrue<StrictEqual<never, never>>();
 tsAssertTrue<StrictEqual<() => number, (this: unknown) => number>>();
 tsAssertTrue<StrictEqual<{ a: 1; b: 2 }, { a: 1 } & { b: 2 }>>();
+
+// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 (<T>() => tsAssertTrue<StrictEqual<T, T>>())();
 
 tsAssertFalse<StrictEqual<number, any>>();
