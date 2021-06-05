@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ts-version: ['3.9', '4.0', '4.1', '4.2', '4.3']
+        ts-version: ['4.1', '4.2', '4.3']
     name: TypeScript ${{ matrix.ts-version }}
     runs-on: ubuntu-latest
     steps:
