@@ -35,9 +35,10 @@
 	},
 	"devDependencies": {
 		"del-cli": "^3.0.1",
+		"eslint-config-xo-typescript": "^0.41.1",
 		"np": "^6.5.0",
 		"typescript": "~4.1.3",
-		"xo": "^0.36.1"
+		"xo": "^0.39.1"
 	},
 	"publishConfig": {
 		"access": "public"

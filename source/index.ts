@@ -14,7 +14,8 @@ export type IfNever<T, A, B> = [T] extends [never] ? A : B;
 export type IfAny<T, A, B> = 0 extends (1 & T) ? A : B;
 export type IfUnknown<T, A, B> = [unknown] extends [T] ? IfAny<T, B, A> : B;
 
-export type StrictExtends<A, B> = [A] extends [B] ? true : false;
+export type IfStrictExtends<A, B, ThenType, ElseType> = [A] extends [B] ? ThenType : ElseType;
+export type StrictExtends<A, B> = IfStrictExtends<A, B, true, false>;
 export type BidirectionalStrictExtends<A, B> = And<[StrictExtends<A, B>, StrictExtends<B, A>]>;
 
 export type IfNotExtendsCoalesce<T, ShouldExtend, Fallback> =
@@ -67,12 +68,6 @@ export type IfStrictEqual<A, B, ThenType, ElseType> = And<[
 ]> extends true ? ThenType : ElseType;
 
 export type StrictEqual<A, B> = IfStrictEqual<A, B, true, false>;
-
-/// -------------------------------------------------------------------------------------
-
-export type IfIdenticalInternalTSRepresentation<A, B, ThenType, ElseType> =
-	(<T>() => [T] extends [A] ? 1 : 2) extends
-	(<T>() => [T] extends [B] ? 1 : 2) ? ThenType : ElseType;
 
 /// -------------------------------------------------------------------------------------
 

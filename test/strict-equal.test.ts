@@ -6,7 +6,6 @@ tsAssertTrue<StrictEqual<unknown, unknown>>();
 tsAssertTrue<StrictEqual<never, never>>();
 tsAssertTrue<StrictEqual<() => number, (this: unknown) => number>>();
 tsAssertTrue<StrictEqual<{ a: 1; b: 2 }, { a: 1 } & { b: 2 }>>();
-(<T>() => tsAssertTrue<StrictEqual<T, T>>())();
 
 tsAssertFalse<StrictEqual<number, any>>();
 tsAssertFalse<StrictEqual<unknown, any>>();
