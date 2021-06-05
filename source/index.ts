@@ -33,12 +33,6 @@ export type PropOrNever<T, P> = P extends string | number | symbol ? (T extends 
 
 /// -------------------------------------------------------------------------------------
 
-export type IfIdenticalInternalTSRepresentation<A, B, ThenType, ElseType> =
-	(<T>() => [T] extends [A] ? 1 : 2) extends
-	(<T>() => [T] extends [B] ? 1 : 2) ? ThenType : ElseType;
-
-/// -------------------------------------------------------------------------------------
-
 export type ImproveFunctionTypeReadability<T> =
 	T extends (this: infer TT, ...args: infer A) => infer R ?
 		IfUnknown<TT, (...args: A) => R, T> : T;
@@ -65,19 +59,13 @@ type DeepTransformerHelperForEquals<T> = IfAny<T, SecretForAny,
 	>
 >;
 
-export type IfStrictEqual<A, B, ThenType, ElseType> =
-	IfIdenticalInternalTSRepresentation<
-		A,
-		B,
-		ThenType,
-		And<[
-			BidirectionalStrictExtends<A, B>,
-			BidirectionalStrictExtends<
-				DeepTransformerHelperForEquals<A>,
-				DeepTransformerHelperForEquals<B>
-			>
-		]> extends true ? ThenType : ElseType
-	>;
+export type IfStrictEqual<A, B, ThenType, ElseType> = And<[
+	BidirectionalStrictExtends<A, B>,
+	BidirectionalStrictExtends<
+		DeepTransformerHelperForEquals<A>,
+		DeepTransformerHelperForEquals<B>
+	>
+]> extends true ? ThenType : ElseType;
 
 export type StrictEqual<A, B> = IfStrictEqual<A, B, true, false>;
 
