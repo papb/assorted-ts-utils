@@ -3,16 +3,18 @@ on: [push, pull_request]
 
 jobs:
   test:
+    strategy:
+      fail-fast: false
+      matrix:
+        ts-version: ['3.9', '4.0', '4.1', '4.2', '4.3']
+    name: TypeScript ${{ matrix.ts-version }}
     runs-on: ubuntu-latest
     steps:
-      -
-        uses: actions/checkout@v2
-      -
-        name: Use Node.js 12.x
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      -
-        run: npm install
-      -
-        run: npm test
+      - run: npm install
+      - run: npm install --save-dev typescript@~${{ matrix.ts-version }}
+      - run: npm test
