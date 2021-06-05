@@ -1,14 +1,13 @@
 import { tsAssertTrue, tsAssertFalse } from '../source/assert';
-import { StrictEqual } from '../source';
+import { StrictEqual, IfIdenticalInternalTSRepresentation } from '../source';
 
 tsAssertTrue<StrictEqual<any, any>>();
 tsAssertTrue<StrictEqual<unknown, unknown>>();
 tsAssertTrue<StrictEqual<never, never>>();
 tsAssertTrue<StrictEqual<() => number, (this: unknown) => number>>();
 tsAssertTrue<StrictEqual<{ a: 1; b: 2 }, { a: 1 } & { b: 2 }>>();
-
-// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 (<T>() => tsAssertTrue<StrictEqual<T, T>>())();
+(<T>() => tsAssertTrue<IfIdenticalInternalTSRepresentation<T, T, true, false>>())();
 
 tsAssertFalse<StrictEqual<number, any>>();
 tsAssertFalse<StrictEqual<unknown, any>>();

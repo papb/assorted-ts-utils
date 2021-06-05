@@ -10,6 +10,7 @@
 		"@typescript-eslint/ban-types": "off",
 		"@typescript-eslint/indent": "off",
 		"@typescript-eslint/object-curly-spacing": ["error", "always"],
-		"@typescript-eslint/no-unnecessary-type-arguments": "off"
+		"@typescript-eslint/no-unnecessary-type-arguments": "off",
+		"@typescript-eslint/no-confusing-void-expression": "off"
 	}
 }
