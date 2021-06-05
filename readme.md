@@ -24,13 +24,21 @@ $ npm install @papb/assorted-ts-utils
 ## Usage
 
 ```ts
-import { tsAssertTrue } from '@papb/assorted-ts-utils/assert';
 import {
 	StrictEqual,
 	ReplaceKeyType,
 	ParseArray,
-	ReplaceAllTypeOccurrences
+	ReplaceAllTypeOccurrences,
+	IfAny,
+	IfNever
 } from '@papb/assorted-ts-utils';
+
+import {
+	tsAssertTrue,
+	tsAssertTypeAcceptsValue,
+	tsAssertTypesExactlyEqual,
+	tsAssertExtends
+} from '@papb/assorted-ts-utils/assert';
 
 type T1 = StrictEqual<{ a: 1 }, { a: 1 }>;
 //=> type T1 = true
@@ -78,6 +86,15 @@ type T7 = IfAny<unknown, 'hello', 'world'>;
 
 type T8 = IfNever<1 & 2, 'hello', 'world'>;
 //=> type T8 = 'hello';
+
+type T9 = { a: string; b: string | number };
+const someValue =
+	tsAssertTypeAcceptsValue()<T9>()(
+		// Autocomplete for `a` and `b` available on the object below
+		{ a: 'hello', b: 123 } as const
+	);
+tsAssertTypesExactlyEqual()<typeof someValue>()<{ a: 'hello'; b: 123 }>();
+tsAssertExtends()<typeof someValue>()<T9>();
 ```
 
 
